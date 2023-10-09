@@ -1,6 +1,7 @@
 import { Route, Routes, Link, BrowserRouter as Router} from 'react-router-dom'; 
+import { useState, useEffect } from 'react';
 import Active from './components/Active';
-import All from './components/Active';
+import All from './components/All';
 import Completed from './components/Completed';
 
 function App() {
@@ -10,9 +11,26 @@ function App() {
   const day = date.getDate();
   const year = date.getFullYear();
 
+  const [newItem, setNewItem] = useState('');
+  const [itemList, setItemList] = useState([]);
+
+  function handleOnChange(event) {
+    setNewItem(event.target.value);
+  }
+
+  function addItem() {
+    setItemList(prevItemList => [...prevItemList, newItem]);
+    setNewItem('');
+  }
+
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <Routes> 
+          <Route exact path='/' Component = {All}/>
+          <Route exact path='/active' Component = {Active}/>
+          <Route exact path='/completed' Component = {Completed}/>
+        </Routes>
+
       <header>
         <h1>My TO-DO App</h1>
         <nav>
@@ -26,13 +44,11 @@ function App() {
         </nav>
       </header>
 
-      
-        <Routes>
-          <Route exact path='/' Component = {All}/>
-          <Route exact path='/active' Component = {Active}/>
-          <Route exact path='/completed' Component = {Completed}/>
-        </Routes>
-      </Router>
+      <main>
+        <All handleClick={addItem} handleChange={handleOnChange}/>
+      </main>
+        
+    
 
       <footer>
         <small> {day}-{month}-{year}</small> <br />
@@ -40,7 +56,7 @@ function App() {
       </footer>
 
       
-    </div>
+    </Router>
   );
 }
 

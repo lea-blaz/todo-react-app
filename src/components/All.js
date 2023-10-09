@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 
-function All() {
+function All(props) {
     return(
         <div>
           <Link to='/'></Link>
-          All
+          <input type='text' placeholder='Add item to the list...' onChange={props.handleChange}></input>
+          <button type='button' onClick={props.handleClick}>ADD ITEM</button>
+          <div className='item-container'>
+          <p>{props.item}</p>
+          </div>
         </div>
     )
 }
