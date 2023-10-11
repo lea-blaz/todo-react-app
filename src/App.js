@@ -1,6 +1,7 @@
 import { Route, Routes, BrowserRouter as Router} from 'react-router-dom'; 
 import { useState } from 'react';
 import { All, Active, Completed } from './components';
+//import { initialList } from './utilities/initialList';
 import './App.css';
 
 function App() {
@@ -18,14 +19,16 @@ function App() {
   }
 
   function addItem() {
-      setItemList(prevList =>  [...prevList, newItem]);
+      setItemList(prevList =>  [...prevList,  newItem]);
       setNewItem('');
     }
-  
-  
+  function completeItem(item) {
+    const newArray = itemList.filter((newItem) => newItem !== item);
+    setItemList(newArray);
+  }
   
 
-  const itemMap = itemList.map(item => <ul><li>{item}</li></ul>);
+  const itemMap = itemList.map(item => <ul><li>{item} <button onClick={event => completeItem(item)}>-</button></li></ul>);
 
   return (
     <Router className='app-container'>
@@ -35,8 +38,7 @@ function App() {
           <Route  path='/completed' element = {<Completed />}/>
         </Routes>
 
-      
-
+    
 
       <footer>
         <small> {day}-{month}-{year}</small> <br />

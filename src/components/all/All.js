@@ -13,7 +13,7 @@ function All(props) {
             <input type='text' placeholder='Add item to the list...' onChange={props.handleChange}></input>
             <button type='button' onClick={props.handleClick}>Add Item</button>
 
-            <div className='list-item'>
+            <div className='list-item' onClick={props.complete}>
               {props.item}
             </div>
             
