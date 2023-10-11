@@ -1,0 +1,24 @@
+.header-container {
+    background: indianred;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.header-container>h1 {
+    text-align: center;
+    color: ivory;
+}
+
+.nav-container li {
+    display: inline-block;
+    margin-right: 0.8em;
+}
+
+.nav-container ul {
+    background: ivory;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+

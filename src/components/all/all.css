@@ -1,0 +1,19 @@
+.list-container {
+  background-color: indianred;
+  height: 100vh;
+  color: ivory;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-container input, .list-container button {
+    background: ivory;
+    color: indianred;
+    font-weight: bold;
+}
+
+.list-item button {
+   width: 5em;
+   font-size: medium;
+}
